@@ -1,4 +1,4 @@
-FROM    nginx
+FROM    ubuntu:14.04
 MAINTAINER rexm
 
 RUN apt-get -y -q install wget
