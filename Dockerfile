@@ -1,8 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER rexm
 
-RUN apt-get install -y -q git-core build-essential autoconf libtool gettext
-RUN mkdir ~/src
+RUN apt-get install -y -q -m git-core build-essential autoconf libtool gettext
 ADD . /usr/src/mono
 WORKDIR /usr/src/mono
 RUN git clone git://github.com/mono/mono.git
