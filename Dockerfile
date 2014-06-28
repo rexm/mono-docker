@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER rexm
 
-RUN apt-get install -y -q git autoconf automake libtool g++ gettext
+RUN apt-get install -y -q git-core build-essential autoconf libtool gettext
 RUN mkdir ~/src
 ADD . /usr/src/mono
 WORKDIR /usr/src/mono
