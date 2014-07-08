@@ -1,11 +1,10 @@
 FROM ubuntu:14.04
-MAINTAINER rexm
+MAINTAINER Rex Morgan <rex@rexmorgan.net> (@rexm)
 
-RUN apt-get install -y -q -m git-core build-essential autoconf libtool gettext
-ADD . /usr/src/mono
-WORKDIR /usr/src/mono
-RUN git clone git://github.com/mono/mono.git
-RUN ./autogen.sh --prefix=/usr --with-mcs-docs=no
-RUN make get-monolite-latest
-RUN make
-RUN make install
+RUN apt-get update -y -q
+RUN apt-get -y -q install wget
+RUN wget -q http://download.opensuse.org/repositories/home:tpokorra:mono/xUbuntu_14.04/Release.key -0- | apt-key add -
+RUN apt-get remove -y --auto-remove wget
+RUN sh -c "echo 'deb http://download.opensuse.org/repositories/home:/tpokorra:/mono/xUbuntu_14.04/ /' >> /etc/apt/sources.list.d/mono-opt.list"
+RUN apt-get -q update
+RUN apt-get -y -q install mono-opt
